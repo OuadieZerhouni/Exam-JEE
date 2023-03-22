@@ -81,24 +81,22 @@ public Task update(Task task) {
             }
         }
 
-        if (newIndex < oldIndex) { 
-            task.setOrdre(newIndex);
-            tasks.add(newIndex, task);
-            System.out.println("here" + newIndex + "-" + oldIndex);
+        task.setOrdre(newIndex);
+        tasks.add(newIndex, task);
+        System.out.println("here"+newIndex+"-"+oldIndex);
+        if (newIndex < oldIndex) {
             for (int i = newIndex; i < oldIndex; i++) {
                 Task t = tasks.get(i);
                 if (t != task) {
                     t.setOrdre(t.getOrdre() + 1);
                 }
             }
-        } else if (newIndex > oldIndex) { // Moving task down
-            task.setOrdre(newIndex - 1);
-            tasks.add(newIndex - 1, task);
-            System.out.println("here" + newIndex + "-" + oldIndex);
-            for (int i = oldIndex; i < newIndex; i++) {
+        } else if (newIndex > oldIndex) {
+
+            for (int i = oldIndex; i < tasks.size(); i++) {
                 Task t = tasks.get(i);
                 if (t != task) {
-                    t.setOrdre(t.getOrdre() - 1);
+                    t.setOrdre(t.getOrdre() + 1);
                 }
             }
         }
