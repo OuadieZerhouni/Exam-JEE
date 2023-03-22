@@ -80,6 +80,9 @@ public Task update(Task task) {
                 break;
             }
         }
+        if(newIndex==oldIndex){
+            newIndex++;
+        }
 
         task.setOrdre(newIndex);
         tasks.add(newIndex, task);
